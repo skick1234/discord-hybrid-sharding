@@ -2,6 +2,7 @@ docs
 .github
 node_modules
 test
+assests
 .test
 .jsdoc.conf.json
 package-lock.json

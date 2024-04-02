@@ -15,13 +15,8 @@ If you are interested in auto-scaling & cross-hosting on other machines, check o
 ### Featured by Discord Creators
 
 [Private Community for Verified Bot Developers. ](https://discord.gg/R3hPevRtUV)
-[Meet big bot and small bot developers and have a nice exchange...](https://discord.gg/R3hPevRtUV)
-
-<p>
-<a href="https://discord.gg/R3hPevRtUV">
-<img src="https://media.discordapp.net/attachments/980770619161448489/982938274677018624/banner.png?width=320&height=80">
-</a>
-</p>
+[Meet large and small bot developers and have a nice exchange...](https://discord.gg/R3hPevRtUV)
+[![](./assets/image.png)](https://discord.gg/R3hPevRtUV)
 
 ## Why?
 
