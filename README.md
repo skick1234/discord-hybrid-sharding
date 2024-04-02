@@ -16,7 +16,12 @@ If you are interested in auto-scaling & cross-hosting on other machines, check o
 
 [Private Community for Verified Bot Developers. ](https://discord.gg/R3hPevRtUV)
 [Meet large and small bot developers and have a nice exchange...](https://discord.gg/R3hPevRtUV)
-[![](./assets/image.png)](https://discord.gg/R3hPevRtUV)
+
+<p>
+<a href="https://discord.gg/R3hPevRtUV">
+<img src="./assets/image.png" height="80" width="320">
+</a>
+</p>
 
 ## Why?
 
