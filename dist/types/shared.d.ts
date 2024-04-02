@@ -138,6 +138,5 @@ export interface ClusterClientEvents<DiscordClient> {
     message: [message: BaseMessage | Serializable];
     ready: [clusterClient: ClusterClient<DiscordClient>];
 }
-export interface DjsDiscordClient extends Client {
-}
+export type DjsDiscordClient = Client;
 //# sourceMappingURL=shared.d.ts.map

@@ -1,4 +1,5 @@
 /// <reference types="node" />
+/// <reference types="node" />
 import { RawMessage } from '../Structures/IPCMessage';
 import { Awaitable, ClusterClientEvents, evalOptions, Serialized } from '../types/shared';
 import { ClusterManager as Manager } from '../Core/ClusterManager';

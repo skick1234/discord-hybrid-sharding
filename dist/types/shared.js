@@ -38,4 +38,4 @@ var messageType;
     messageType[messageType["CLIENT_MANAGER_EVAL_RESPONSE"] = 19] = "CLIENT_MANAGER_EVAL_RESPONSE";
     messageType[messageType["MANAGER_BROADCAST_REQUEST"] = 20] = "MANAGER_BROADCAST_REQUEST";
     messageType[messageType["MANAGER_BROADCAST_RESPONSE"] = 21] = "MANAGER_BROADCAST_RESPONSE";
-})(messageType = exports.messageType || (exports.messageType = {}));
+})(messageType || (exports.messageType = messageType = {}));

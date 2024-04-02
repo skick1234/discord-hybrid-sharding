@@ -55,7 +55,7 @@ export class HeartbeatManager {
 export class Heartbeat {
     manager: HeartbeatManager;
     options: Required<keepAliveOptions>;
-    interval?: NodeJS.Timer;
+    interval?: NodeJS.Timeout;
     heartbeats: Map<number, Boolean>;
     instance: Cluster;
     constructor(manager: HeartbeatManager, instance: Cluster, options: Required<keepAliveOptions>) {

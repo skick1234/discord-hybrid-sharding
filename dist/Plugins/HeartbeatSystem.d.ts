@@ -21,12 +21,12 @@ export declare class HeartbeatManager {
 export declare class Heartbeat {
     manager: HeartbeatManager;
     options: Required<keepAliveOptions>;
-    interval?: NodeJS.Timer;
+    interval?: NodeJS.Timeout;
     heartbeats: Map<number, Boolean>;
     instance: Cluster;
     constructor(manager: HeartbeatManager, instance: Cluster, options: Required<keepAliveOptions>);
     ack(date: number): boolean;
-    start(): NodeJS.Timer;
+    start(): NodeJS.Timeout;
     stop(): void;
     resume(): void;
 }

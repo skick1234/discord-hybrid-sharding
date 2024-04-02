@@ -162,6 +162,4 @@ export interface ClusterClientEvents<DiscordClient> {
 }
 
 
-export interface DjsDiscordClient extends Client {
-
-}
+export type DjsDiscordClient = Client;

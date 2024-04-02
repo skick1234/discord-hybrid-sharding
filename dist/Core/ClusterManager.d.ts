@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import EventEmitter from 'events';
 import { Queue } from '../Structures/Queue';
 import { Cluster } from './Cluster';

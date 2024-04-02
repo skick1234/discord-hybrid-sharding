@@ -72,7 +72,7 @@ export class Cluster extends EventEmitter {
         current: number;
         max: number;
         interval: number;
-        reset?: NodeJS.Timer;
+        reset?: NodeJS.Timeout;
         resetRestarts: () => void;
         cleanup: () => void;
         append: () => void;

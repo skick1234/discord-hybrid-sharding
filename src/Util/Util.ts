@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import { request } from 'https';
 import { DefaultOptions, Endpoints } from '../types/shared';
 
 export function generateNonce() {
@@ -37,14 +37,36 @@ export function shardIdForGuildId(guildId: string, totalShards = 1) {
 
 export async function fetchRecommendedShards(token: string, guildsPerShard = 1000) {
     if (!token) throw new Error('DISCORD_TOKEN_MISSING');
-    return fetch(`${DefaultOptions.http.api}/v${DefaultOptions.http.version}${Endpoints.botGateway}`, {
+
+    const options = {
         method: 'GET',
-        headers: { Authorization: `Bot ${token.replace(/^Bot\s*/i, '')}` },
-    })
-        .then(res => {
-            if (res.ok) return res.json() as Promise<{ shards: number }>;
-            if (res.status === 401) throw new Error('DISCORD_TOKEN_INVALID');
-            throw res;
-        })
-        .then(data => data.shards * (1000 / guildsPerShard));
+        headers: {
+            'Authorization': `Bot ${token.replace(/^Bot\s*/i, '')}`
+        }
+    };
+
+    return new Promise<number>((resolve, reject) => {
+        const req = request(`${DefaultOptions.http.api}/v${DefaultOptions.http.version}${Endpoints.botGateway}`, options, (res) => {
+            let data = '';
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                if (res.statusCode === 200) {
+                    const responseData = JSON.parse(data);
+                    resolve(responseData.shards * (1000 / guildsPerShard));
+                } else if (res.statusCode === 401) {
+                    reject(new Error('DISCORD_TOKEN_INVALID'));
+                } else {
+                    reject(new Error(`Failed to fetch data. Status code: ${res.statusCode}`));
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            reject(error);
+        });
+
+        req.end();
+    });
 }
