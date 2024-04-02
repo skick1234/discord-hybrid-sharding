@@ -1,10 +1,9 @@
-import type { Cluster } from "../Core/Cluster";
+import type { Cluster } from '../Core/Cluster';
 
 export class ClusterManagerHooks {
-    constructor() {
-    }
+    constructor() {}
 
-    constructClusterArgs(cluster: Cluster,args: string[]) {
+    constructClusterArgs(cluster: Cluster, args: string[]) {
         return args;
     }
 }

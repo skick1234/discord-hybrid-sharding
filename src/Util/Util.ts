@@ -41,29 +41,33 @@ export async function fetchRecommendedShards(token: string, guildsPerShard = 100
     const options = {
         method: 'GET',
         headers: {
-            'Authorization': `Bot ${token.replace(/^Bot\s*/i, '')}`
-        }
+            Authorization: `Bot ${token.replace(/^Bot\s*/i, '')}`,
+        },
     };
 
     return new Promise<number>((resolve, reject) => {
-        const req = request(`${DefaultOptions.http.api}/v${DefaultOptions.http.version}${Endpoints.botGateway}`, options, (res) => {
-            let data = '';
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-            res.on('end', () => {
-                if (res.statusCode === 200) {
-                    const responseData = JSON.parse(data);
-                    resolve(responseData.shards * (1000 / guildsPerShard));
-                } else if (res.statusCode === 401) {
-                    reject(new Error('DISCORD_TOKEN_INVALID'));
-                } else {
-                    reject(new Error(`Failed to fetch data. Status code: ${res.statusCode}`));
-                }
-            });
-        });
+        const req = request(
+            `${DefaultOptions.http.api}/v${DefaultOptions.http.version}${Endpoints.botGateway}`,
+            options,
+            res => {
+                let data = '';
+                res.on('data', chunk => {
+                    data += chunk;
+                });
+                res.on('end', () => {
+                    if (res.statusCode === 200) {
+                        const responseData = JSON.parse(data);
+                        resolve(responseData.shards * (1000 / guildsPerShard));
+                    } else if (res.statusCode === 401) {
+                        reject(new Error('DISCORD_TOKEN_INVALID'));
+                    } else {
+                        reject(new Error(`Failed to fetch data. Status code: ${res.statusCode}`));
+                    }
+                });
+            },
+        );
 
-        req.on('error', (error) => {
+        req.on('error', error => {
             reject(error);
         });
 

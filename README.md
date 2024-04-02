@@ -40,7 +40,7 @@ Your only solution becomes converting to the sharding manager. That's why this n
 -   `Strings` & `Functions with Context` support on `.broadcastEval()`
 -   Optional timeout feature on `.broadcastEval()` to prevent memory leaks
 -   **[Supports cross-hosting: `Shard/Cluster` managing and cross-host communication (`.broadcastEval()`, `IPC`)](https://npmjs.com/discord-cross-hosting)**
-> Hybrid-Sharding just manages the threading logic, everything else is done by your chosen library, which is the reason that ratelimits will not be synced across clusters. Please use a rest proxy such as (@discordjs/rest, nirn-proxy, ...)
+    > Hybrid-Sharding just manages the threading logic, everything else is done by your chosen library, which is the reason that ratelimits will not be synced across clusters. Please use a rest proxy such as (@discordjs/rest, nirn-proxy, ...)
 
 **Scroll down to check our new functions!**
 
@@ -132,7 +132,7 @@ client.cluster
 | totalClusters     | number or string      | "auto"   | Amount of processes/clusters which will be spawned                                                                                |
 | shardsPerClusters | number or string      | -        | Amount of shards which will be in one process/cluster                                                                             |
 | shardList         | Array[number]         | -        | OPTIONAL - On cross-hosting or spawning specific shards you can provide a shardList of internal Shard IDs, which will get spawned |
-| mode              | "worker" or "process" | "worker" | ClusterManager mode for the processes                                                                                            |
+| mode              | "worker" or "process" | "worker" | ClusterManager mode for the processes                                                                                             |
 | token             | string                | -        | OPTIONAL -Bot token is only required totalShards are set to "auto"                                                                |
 
 The Manager.spawn options are the same as for Sharding Manager
@@ -238,7 +238,7 @@ Bot.js
 // Typescript: import { ClusterClient, getInfo } from 'discord-hybrid-sharding'
 const { ClusterClient, getInfo } = require('discord-hybrid-sharding');
 const client = new Discord.Client(...)
-client.cluster = new Cluster.Client(client);
+client.cluster = new ClusterClient(client);
 
 if (client.cluster.maintenance) console.log(`Bot on maintenance mode with ${client.cluster.maintenance}`);
 

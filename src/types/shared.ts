@@ -63,14 +63,14 @@ export type Awaitable<T> = T | PromiseLike<T>;
 export type Serialized<T> = T extends symbol | bigint | (() => any)
     ? never
     : T extends number | string | boolean | undefined
-    ? T
-    : T extends { toJSON(): infer R }
-    ? R
-    : T extends ReadonlyArray<infer V>
-    ? Serialized<V>[]
-    : T extends ReadonlyMap<unknown, unknown> | ReadonlySet<unknown>
-    ? {}
-    : { [K in keyof T]: Serialized<T[K]> };
+      ? T
+      : T extends { toJSON(): infer R }
+        ? R
+        : T extends ReadonlyArray<infer V>
+          ? Serialized<V>[]
+          : T extends ReadonlyMap<unknown, unknown> | ReadonlySet<unknown>
+            ? {}
+            : { [K in keyof T]: Serialized<T[K]> };
 
 export interface ClusterSpawnOptions {
     delay?: number;
@@ -160,6 +160,5 @@ export interface ClusterClientEvents<DiscordClient> {
     message: [message: BaseMessage | Serializable];
     ready: [clusterClient: ClusterClient<DiscordClient>];
 }
-
 
 export type DjsDiscordClient = Client;
