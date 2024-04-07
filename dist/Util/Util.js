@@ -42,13 +42,13 @@ async function fetchRecommendedShards(token, guildsPerShard = 1000) {
     const options = {
         method: 'GET',
         headers: {
-            'Authorization': `Bot ${token.replace(/^Bot\s*/i, '')}`
-        }
+            Authorization: `Bot ${token.replace(/^Bot\s*/i, '')}`,
+        },
     };
     return new Promise((resolve, reject) => {
-        const req = (0, https_1.request)(`${shared_1.DefaultOptions.http.api}/v${shared_1.DefaultOptions.http.version}${shared_1.Endpoints.botGateway}`, options, (res) => {
+        const req = (0, https_1.request)(`${shared_1.DefaultOptions.http.api}/v${shared_1.DefaultOptions.http.version}${shared_1.Endpoints.botGateway}`, options, res => {
             let data = '';
-            res.on('data', (chunk) => {
+            res.on('data', chunk => {
                 data += chunk;
             });
             res.on('end', () => {
@@ -64,7 +64,7 @@ async function fetchRecommendedShards(token, guildsPerShard = 1000) {
                 }
             });
         });
-        req.on('error', (error) => {
+        req.on('error', error => {
             reject(error);
         });
         req.end();

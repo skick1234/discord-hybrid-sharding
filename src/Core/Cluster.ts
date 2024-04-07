@@ -145,7 +145,7 @@ export class Cluster extends EventEmitter {
      * @param spawnTimeout The amount in milliseconds to wait until the {@link Client} has become ready
      * before resolving. (-1 or Infinity for no wait)
      */
-    public async spawn(spawnTimeout = 30000) {
+    public async spawn(spawnTimeout = -1) {
         if (this.thread) throw new Error('CLUSTER ALREADY SPAWNED | ClusterId: ' + this.id);
         this.thread = new this.THREAD(path.resolve(this.manager.file), {
             ...this.manager.clusterOptions,

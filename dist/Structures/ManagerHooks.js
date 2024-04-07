@@ -2,8 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClusterManagerHooks = void 0;
 class ClusterManagerHooks {
-    constructor() {
-    }
+    constructor() { }
     constructClusterArgs(cluster, args) {
         return args;
     }

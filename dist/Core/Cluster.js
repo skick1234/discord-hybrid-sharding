@@ -108,7 +108,7 @@ class Cluster extends events_1.default {
      * @param spawnTimeout The amount in milliseconds to wait until the {@link Client} has become ready
      * before resolving. (-1 or Infinity for no wait)
      */
-    async spawn(spawnTimeout = 30000) {
+    async spawn(spawnTimeout = -1) {
         if (this.thread)
             throw new Error('CLUSTER ALREADY SPAWNED | ClusterId: ' + this.id);
         this.thread = new this.THREAD(path_1.default.resolve(this.manager.file), {

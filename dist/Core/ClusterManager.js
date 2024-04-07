@@ -227,7 +227,9 @@ class ClusterManager extends events_1.default {
         //Calculate Shards per Cluster:
         if (this.shardsPerClusters)
             this.totalClusters = Math.ceil(this.shardList.length / this.shardsPerClusters);
-        this.shardClusterList = (0, Util_1.chunkArray)(this.shardList, (!isNaN(this.shardsPerClusters) ? this.shardsPerClusters : Math.ceil(this.shardList.length / this.totalClusters)));
+        this.shardClusterList = (0, Util_1.chunkArray)(this.shardList, !isNaN(this.shardsPerClusters)
+            ? this.shardsPerClusters
+            : Math.ceil(this.shardList.length / this.totalClusters));
         if (this.shardClusterList.length !== this.totalClusters) {
             this.totalClusters = this.shardClusterList.length;
         }
@@ -370,7 +372,7 @@ class ClusterManager extends events_1.default {
      * Kills all running clusters and respawns them.
      * @param options Options for respawning shards
      */
-    async respawnAll({ clusterDelay = this.spawnOptions.delay = 5500, respawnDelay = this.spawnOptions.delay = 5500, timeout = -1 } = {}) {
+    async respawnAll({ clusterDelay = (this.spawnOptions.delay = 5500), respawnDelay = (this.spawnOptions.delay = 5500), timeout = -1, } = {}) {
         this.promise.nonce.clear();
         let s = 0;
         let i = 0;
